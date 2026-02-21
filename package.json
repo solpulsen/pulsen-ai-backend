@@ -1,0 +1,22 @@
+{
+  "name": "pulsen-ai-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --loader tsx server/index.ts",
+    "build": "echo 'No build needed'"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "cookie-parser": "^1.4.7",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "cors": "^2.8.5",
+    "tsx": "^4.19.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
