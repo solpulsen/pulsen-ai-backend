@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node --loader tsx server/index.ts",
-    "build": "echo 'No build needed'"
+    "start": "tsx server/index.ts"
   },
   "dependencies": {
     "express": "^4.21.2",
