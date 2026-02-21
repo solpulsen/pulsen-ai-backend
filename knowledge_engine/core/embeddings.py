@@ -1,8 +1,7 @@
-"""
-Embedding Provider — Swappable embedding backend.
+"""Embedding Provider — LOCKED to text-embedding-3-small (1536 dims).
 
-v1: "openai" = text-embedding-3-small (1536 dims) — matches VECTOR(1536) in DB
-v2 (future): "local" can be added with separate column/table
+FROZEN ARCHITECTURE: Do not change model or dimensions without migration + full reindex.
+Matches VECTOR(1536) and HNSW cosine index in knowledge_chunks.
 
 Usage:
     from knowledge_engine.core.embeddings import get_embedder
@@ -18,6 +17,8 @@ import logging
 import os
 from abc import ABC, abstractmethod
 from typing import List
+
+from knowledge_engine.core.config import EMBEDDING_MODEL, EMBEDDING_DIMENSIONS
 
 logger = logging.getLogger(__name__)
 
@@ -53,8 +54,8 @@ class OpenAIEmbeddingProvider(EmbeddingProvider):
     Matches VECTOR(1536) and HNSW cosine index in knowledge_chunks.
     """
 
-    MODEL_ID = "text-embedding-3-small"
-    DIMENSION = 1536
+    MODEL_ID = EMBEDDING_MODEL
+    DIMENSION = EMBEDDING_DIMENSIONS
 
     def __init__(self):
         from openai import AsyncOpenAI
@@ -103,7 +104,7 @@ _embedder: EmbeddingProvider | None = None
 def get_embedder() -> EmbeddingProvider:
     """
     Get the configured embedding provider (singleton).
-    v1: always OpenAI text-embedding-3-small (1536 dims).
+    Locked: OpenAI text-embedding-3-small (1536 dims). No alternatives.
     """
     global _embedder
     if _embedder is None:
