@@ -9,12 +9,12 @@ const JWT_SECRET = process.env.JWT_SECRET || 'pulsen-ai-secret-key-change-in-pro
 const JWT_EXPIRES_IN = '24h';
 
 // User database (in production, use a real database)
-// Password hashed with bcrypt: pulsen2026
+// Password hashed with bcrypt: Buv36Au6yaleYm2atHyf
 const USERS = [
   {
     username: 'admin',
-    // bcrypt hash of "pulsen2026"
-    passwordHash: '$2b$10$.au7qaivZNPpvnpDcxebju1/4B5BxxBhK096rb.hBB8I4a9VVvy2C',
+    // bcrypt hash of "Buv36Au6yaleYm2atHyf"
+    passwordHash: '$2b$10$CUJIYslMj7GecDEkXKNLZ..QfAiVZq57CFbuhvsadbIyoBVnXJEjO',
     role: 'Admin',
     email: 'admin@solpulsen.se'
   }
